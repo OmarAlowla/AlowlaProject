@@ -3,15 +3,16 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class Controller {
-
+    Category cat = new Category();
+    Area area = new Area();
     public  Controller ()
     {
         fill();
     }
     public void fill()
     {
-        fillCat();
-        fillArea();
+        cat.fill();
+        area.fill();
     }
 
     public  void SearchFood(String ing,String cat,String area)
@@ -38,36 +39,5 @@ public class Controller {
             System.out.println(meal);
         }
     }
-    public  void fillCat()
-    {
-        String URL = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
-        String response = new UrlToJson(URL).getResponse();
-        Gson gson = new Gson();
-        Category list = gson.fromJson(response, Category.class);
-        List<Category.CategoryItem> categories = list.getMeals();
 
-        if (!categories.isEmpty()) {
-            for (int i = 0; i < categories.size(); i++) {
-                System.out.println(categories.get(i).getName());
-            }
-        } else {
-            System.out.println("No categories found");
-        }
-    }
-    public  void fillArea()
-    {
-        String URL = "https://www.themealdb.com/api/json/v1/1/list.php?a=list";
-        String response = new UrlToJson(URL).getResponse();
-        Gson gson = new Gson();
-        Area list = gson.fromJson(response, Area.class);
-        List<Area.AreaItem> Areas = list.getMeals();
-
-        if (!Areas.isEmpty()) {
-            for (int i = 0; i < Areas.size(); i++) {
-                System.out.println(Areas.get(i).getName());
-            }
-        } else {
-            System.out.println("No categories found");
-        }
-    }
 }
