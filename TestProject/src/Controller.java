@@ -1,5 +1,3 @@
-package Logic;
-
 import com.google.gson.Gson;
 
 public class Controller {
@@ -12,8 +10,15 @@ public class Controller {
 
     public void fill() {
         cat.fill();
+        area.fill();
+//        if (cat.getMeals() != null && !cat.getMeals().isEmpty()) {
+//            for (Category.CategoryItem item : cat.getMeals()) {
+//                System.out.println(item.getName());
+//            }
+//        } else {
+//            System.out.println("No areas found");
+//        }
 
-        //area.fill();
     }
 
     public void SearchFood(String ing, String cat, String area) {

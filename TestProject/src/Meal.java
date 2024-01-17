@@ -1,5 +1,3 @@
-package Logic;
-
 public class Meal {
     private String strMeal;
     private String strMealThumb;
@@ -10,7 +8,7 @@ public class Meal {
 
     @Override
     public String toString() {
-        return "Logic.Meal{" +
+        return "Meal{" +
                 "strMeal='" + strMeal + '\'' +
                 ", strMealThumb='" + strMealThumb + '\'' +
                 ", strCategory='" + strCategory + '\'' +

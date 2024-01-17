@@ -1,5 +1,3 @@
-package Logic;
-
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
