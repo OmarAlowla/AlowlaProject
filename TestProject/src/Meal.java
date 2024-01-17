@@ -1,17 +1,16 @@
-import java.util.List;
+package Logic;
 
 public class Meal {
-    public class FoodList {
-        private Meal[] meals;
-
-        public Meal[] GetMeal() {
-            return meals;
-        }
-    }
+    private String strMeal;
+    private String strMealThumb;
+    private String strCategory;
+    private String strArea;
+    private String strInstructions;
+    private String strYoutube;
 
     @Override
     public String toString() {
-        return "Meal{" +
+        return "Logic.Meal{" +
                 "strMeal='" + strMeal + '\'' +
                 ", strMealThumb='" + strMealThumb + '\'' +
                 ", strCategory='" + strCategory + '\'' +
@@ -21,14 +20,6 @@ public class Meal {
                 '}';
     }
 
-    private String strMeal;
-    private String strMealThumb;
-    private String strCategory;
-    private String strArea;
-    private String strInstructions;
-    private String strYoutube;
-
-
     public String getStrCategory() {
         return strCategory;
     }
@@ -36,7 +27,6 @@ public class Meal {
     public void setStrCategory(String strCategory) {
         this.strCategory = strCategory;
     }
-
 
     public String getStrArea() {
         return strArea;
@@ -62,18 +52,28 @@ public class Meal {
         this.strYoutube = strYoutube;
     }
 
-
     public String getStrMeal() {
         return strMeal;
     }
+
     public void setStrMeal(String strMeal) {
         this.strMeal = strMeal;
     }
+
     public String getStrMealThumb() {
         return strMealThumb;
     }
+
     public void setStrMealThumb(String strMealThumb) {
         this.strMealThumb = strMealThumb;
+    }
+
+    public class FoodList {
+        private Meal[] meals;
+
+        public Meal[] GetMeal() {
+            return meals;
+        }
     }
 
 

@@ -1,3 +1,5 @@
+package Logic;
+
 public interface Filters {
-    public void fill();
+    void fill();
 }

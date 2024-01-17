@@ -1,9 +1,12 @@
-import java.awt.Desktop;
+package Logic;
+
+import java.awt.*;
 import java.net.URI;
 
 
 public class ResultToHtml {
     String url;
+
     public ResultToHtml(String url) {
         try {
             if (!url.startsWith("http://") && !url.startsWith("https://")) {

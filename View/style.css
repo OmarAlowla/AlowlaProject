@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    overflow-x: hidden;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    background-color: brown;
+}
+nav{
+    width: 100%;
+    gap: 1em;
+    padding: 2em 0;
+}
+nav a {
+    color: white;
+    font-size: 2em;
+    text-transform: capitalize;
+}   
+
+.search{
+    width: 100%;
+}
