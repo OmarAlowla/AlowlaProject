@@ -6,11 +6,13 @@ public class Controller {
 
     public Controller() {
         fill();
+        RandomMeal();
     }
 
     public void fill() {
         cat.fill();
         area.fill();
+
 //        if (cat.getMeals() != null && !cat.getMeals().isEmpty()) {
 //            for (Category.CategoryItem item : cat.getMeals()) {
 //                System.out.println(item.getName());
@@ -21,9 +23,13 @@ public class Controller {
 
     }
 
-    public void SearchFood(String ing, String cat, String area) {
+    public void SearchFood(String ing) {
 
-        String URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ing + "&c=" + cat + "&a=" + area;
+        String URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ing;
+        endResponse(URL);
+    }
+
+    private void endResponse(String URL) {
         String response = new UrlToJson(URL).getResponse();
         Gson gson = new Gson();
         Food.Meals meals = gson.fromJson(response, Food.Meals.class);
@@ -31,6 +37,12 @@ public class Controller {
         for (Food food : foods) {
             System.out.println(food);
         }
+    }
+
+    public void RandomMeal() {
+
+        String URL = "https://www.themealdb.com/api/json/v1/1/random.php";
+        endResponse(URL);
     }
 
     public void fillMeals(String MealName) {

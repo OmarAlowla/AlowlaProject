@@ -8,14 +8,14 @@ public class Meal {
 
     @Override
     public String toString() {
-        return "Meal{" +
+        return "Meal[]=" +
                 "strMeal='" + strMeal + '\'' +
                 ", strMealThumb='" + strMealThumb + '\'' +
                 ", strCategory='" + strCategory + '\'' +
                 ", strArea='" + strArea + '\'' +
                 ", strInstructions='" + strInstructions + '\'' +
                 ", strYoutube='" + strYoutube + '\'' +
-                '}';
+                '&';
     }
 
     public String getStrCategory() {
