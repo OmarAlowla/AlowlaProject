@@ -31,13 +31,14 @@ public class SpringRun {
 	}
 
 	@GetMapping("/show")
-	public String show() {
+	public String show(@RequestParam(value = "search", defaultValue = "null") String search) {
 		try {
-			// Load the content of show.html from the resources folder
+
 			Resource resource = resourceLoader.getResource("classpath:show.html");
+
 			return Files.lines(Paths.get(resource.getURI())).collect(Collectors.joining("\n"));
 		} catch (IOException e) {
-			// Handle the exception if the file is not found or cannot be read
+
 			e.printStackTrace();
 			return e+"Error loading show.html";
 		}

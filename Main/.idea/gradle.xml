@@ -4,6 +4,30 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/SpringBoot" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/SpringBoot" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/SpringRun" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/SpringRun" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/WebView" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/WebView" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/../SpringBoot" />
         <option name="modules">
           <set>

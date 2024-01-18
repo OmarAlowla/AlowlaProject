@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="SpringBoot" target="17" />
+      <module name="SpringRun" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
