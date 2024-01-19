@@ -1,5 +1,5 @@
 
-package com.example.SpringBoot.main;
+package main;
 
 import com.google.gson.Gson;
 

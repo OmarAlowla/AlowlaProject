@@ -1,4 +1,4 @@
-package com.example.SpringBoot.main;
+package main;
 public interface Filters {
     void fill();
 }

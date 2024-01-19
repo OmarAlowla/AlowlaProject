@@ -1,8 +1,9 @@
 package com.example.SpringBoot;
-
+import main.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 @RestController
 public class SpringRun {
-
+	Controller ct = new Controller();
 	@Autowired
 	private ResourceLoader resourceLoader;
 
@@ -35,7 +36,8 @@ public class SpringRun {
 		try {
 
 			Resource resource = resourceLoader.getResource("classpath:show.html");
-
+			System.out.println(search);
+			ct.SearchFood(search);
 			return Files.lines(Paths.get(resource.getURI())).collect(Collectors.joining("\n"));
 		} catch (IOException e) {
 

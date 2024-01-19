@@ -1,4 +1,4 @@
-package com.example.SpringBoot.main;
+package main;
 
 import java.awt.*;
 import java.net.URI;

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="SpringBoot" target="17" />
       <module name="SpringRun" target="17" />
+      <module name="WebView" target="17" />
+      <module name="WebView.main" target="17" />
+      <module name="WebView.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
