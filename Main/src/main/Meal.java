@@ -1,3 +1,4 @@
+package main;
 public class Meal {
     private String strMeal;
     private String strMealThumb;
