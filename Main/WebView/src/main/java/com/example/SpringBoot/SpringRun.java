@@ -32,14 +32,12 @@ public class SpringRun {
 	}
 
 	@GetMapping("/show")
-	public String show(@RequestParam(value = "search", defaultValue = "null") String search ) {
+	public String show(@RequestParam(value = "search", defaultValue = "null") String search) {
 		try {
 
 			Resource resource = resourceLoader.getResource("classpath:show.html");
 
-
-			ct.SearchFood(search);
-			return Files.lines(Paths.get(resource.getURI())).collect(Collectors.joining("\n"));
+            return Files.lines(Paths.get(resource.getURI())).collect(Collectors.joining("\n"));
 		} catch (IOException e) {
 
 			e.printStackTrace();
