@@ -1,40 +1,33 @@
 package main;
+
 public class Food {
-    private String strMeal;
-    private String strMealThumb;
-    public Food(String strMeal, String strMealThumb) {
 
-        this.strMeal = strMeal;
-        this.strMealThumb = strMealThumb;
-    }
+  private String strMeal;
+  private String strMealThumb;
 
-    public String getStrMeal() {
-        return strMeal;
-    }
+  public Food(String strMeal, String strMealThumb) {
+    this.strMeal = strMeal;
+    this.strMealThumb = strMealThumb;
+  }
 
-    public void setStrMeal(String strMeal) {
-        this.strMeal = strMeal;
-    }
+  public String getStrMeal() {
+    return strMeal;
+  }
 
-    public String getStrMealThumb() {
-        return strMealThumb;
-    }
+  public void setStrMeal(String strMeal) {
+    this.strMeal = strMeal;
+  }
 
-    public void setStrMealThumb(String strMealThumb) {
-        this.strMealThumb = strMealThumb;
-    }
+  public String getStrMealThumb() {
+    return strMealThumb;
+  }
 
-    @Override
-    public String toString() {
-        return "Food [strMeal=" + strMeal + ", strMealThumb=" + strMealThumb + "]";
-    }
+  public void setStrMealThumb(String strMealThumb) {
+    this.strMealThumb = strMealThumb;
+  }
 
-    public class Meals {
-        private Food[] meals;
-
-        public Food[] getFoods() {
-            return meals;
-        }
-    }
-
+  @Override
+  public String toString() {
+    return "Food [strMeal=" + strMeal + ", strMealThumb=" + strMealThumb + "]";
+  }
 }

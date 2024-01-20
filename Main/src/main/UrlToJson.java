@@ -5,16 +5,14 @@ import kong.unirest.Unirest;
 
 public class UrlToJson {
 
-    private final String Response;
+  private final String Response;
 
-    public UrlToJson(String URL) {
-        HttpResponse<String> response = Unirest.get(URL)
-                .asString();
-        Response = response.getBody();
-    }
+  public UrlToJson(String URL) {
+    HttpResponse<String> response = Unirest.get(URL).asString();
+    Response = response.getBody();
+  }
 
-    public String getResponse() {
-        return Response;
-    }
-
+  public String getResponse() {
+    return Response;
+  }
 }

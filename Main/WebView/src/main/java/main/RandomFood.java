@@ -1,40 +1,32 @@
 package main;
-public class RandomFood {
-    private String strMeal;
-    private String strMealThumb;
-    public RandomFood(String strMeal, String strMealThumb) {
 
-        this.strMeal = strMeal;
-        this.strMealThumb = strMealThumb;
-    }
+public class RandomFood extends Food {
 
-    public String getStrMeal() {
-        return strMeal;
-    }
+  private String strMeal;
+  private String strMealThumb;
 
-    public void setStrMeal(String strMeal) {
-        this.strMeal = strMeal;
-    }
+  public RandomFood(String strMeal, String strMealThumb) {
+    super(strMeal, strMealThumb);
+  }
 
-    public String getStrMealThumb() {
-        return strMealThumb;
-    }
+  public String getStrMeal() {
+    return strMeal;
+  }
 
-    public void setStrMealThumb(String strMealThumb) {
-        this.strMealThumb = strMealThumb;
-    }
+  public void setStrMeal(String strMeal) {
+    this.strMeal = strMeal;
+  }
 
-    @Override
-    public String toString() {
-        return "Food [strMeal=" + strMeal + ", strMealThumb=" + strMealThumb + "]";
-    }
+  public String getStrMealThumb() {
+    return strMealThumb;
+  }
 
-    public class Meals {
-        private RandomFood[] meals;
+  public void setStrMealThumb(String strMealThumb) {
+    this.strMealThumb = strMealThumb;
+  }
 
-        public RandomFood[] getFoods() {
-            return meals;
-        }
-    }
-
+  @Override
+  public String toString() {
+    return "Food [strMeal=" + strMeal + ", strMealThumb=" + strMealThumb + "]";
+  }
 }

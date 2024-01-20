@@ -1,4 +1,9 @@
 package com.example.SpringBoot;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
 import main.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -10,38 +15,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Collectors;
-
 @SpringBootApplication
 @RestController
 public class SpringRun {
-	Controller ct = new Controller();
-	@Autowired
-	private ResourceLoader resourceLoader;
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringRun.class, args);
-	}
+  Controller ct = new Controller();
 
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
-	}
+  @Autowired
+  private ResourceLoader resourceLoader;
 
-	@GetMapping("/show")
-	public String show(@RequestParam(value = "search", defaultValue = "null") String search) {
-		try {
+  public static void main(String[] args) {
+    SpringApplication.run(SpringRun.class, args);
+  }
 
-			Resource resource = resourceLoader.getResource("classpath:show.html");
+  @GetMapping("/hello")
+  public String hello(
+    @RequestParam(value = "name", defaultValue = "World") String name
+  ) {
+    return String.format("Hello %s!", name);
+  }
 
-            return Files.lines(Paths.get(resource.getURI())).collect(Collectors.joining("\n"));
-		} catch (IOException e) {
-
-			e.printStackTrace();
-			return e+"Error loading show.html";
-		}
-	}
+  @GetMapping("/show")
+  public String show(
+    @RequestParam(value = "search", defaultValue = "null") String search
+  ) {
+    try {
+      Resource resource = resourceLoader.getResource("classpath:show.html");
+      System.out.println(search);
+      return Files
+        .lines(Paths.get(resource.getURI()))
+        .collect(Collectors.joining("\n"));
+    } catch (IOException e) {
+      e.printStackTrace();
+      return e + "Error loading show.html";
+    }
+  }
 }
