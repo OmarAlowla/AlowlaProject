@@ -4,16 +4,16 @@
 <head>
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
-            integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <style>
         * {
             box-sizing: border-box;
@@ -130,10 +130,13 @@
                 /* Added transition property here */
             }
         }
-        #mealCont{
+
+        #mealCont {
             gap: 3em;
         }
-        .recipe, .pizza-box {
+
+        .recipe,
+        .pizza-box {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -262,12 +265,19 @@
             bottom: 0;
         }
 
-        .small .recipe-desc{
+        .small .recipe-desc {
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             cursor: pointer;
+        }
+
+        .lang-select {
+            text-align: center;
+            margin-left: -5px;
+            z-index: 8;
+            height: 100%;
         }
     </style>
 
@@ -276,93 +286,108 @@
 </head>
 
 <body>
-<nav class="flex">
-    <a href="#"><b>Random Meal</b></a>
-    <a href="#"><b>Ingredient to Meal</b></a>
-</nav>
-<div class="searchCont flex">
+    <nav class="flex">
+        <a href="#"><b>Random Meal</b></a>
+        <a href="#"><b>Ingredient to Meal</b></a>
+    </nav>
+    <div class="searchCont flex">
 
-    <form action="">
+        <form action="">
+            <div class="searchBox">
+
+                <input class="searchInput" type="text" name="search" placeholder="Search">
+                <button class="searchButton" type="submit">
+                    <i class="material-icons">
+                        search
+                    </i>
+                </button>
+
+            </div>
+        </form>
+        <button class="searchButton" type="submit" id="expand">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <div class="searchBox">
 
-            <input class="searchInput" type="text" name="search" placeholder="Search">
-            <button class="searchButton" type="submit">
-                <i class="material-icons">
-                    search
-                </i>
+            <select name="lang" class="searchInput lang-select" >
+                <option value="de-de">Deutsch</option>
+                <option selected="us-en">English</option>
+            </select>
+            <button class="searchButton">
+                <i class="fa-solid fa-language"></i>
+
             </button>
 
         </div>
-    </form>
-    <button class="searchButton" type="submit" id="expand">
-        <i class="fa-solid fa-bars"></i>
-    </button>    
-</div>
+        <button class="searchButton" type="submit"
+            onclick="window.location.href = window.location.href + '?lang=de-de'">
+        </button>
+    </div>
 
-<div class="small" id="mealCont">
-    <article class="recipe">
-        <div class="pizza-box">
-            <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg" width="1500"
-                 height="1368" alt="">
-        </div>
-        <div class="recipe-content">
-            <p class="recipe-tags">
-                <span class="recipe-tag"> Pepperoni Pizza</span>
-                <span class="recipe-tag">Main dish</span>
-            </p>
+    <div class="small" id="mealCont">
+        <article class="recipe">
+            <div class="pizza-box">
+                <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg" width="1500"
+                    height="1368" alt="">
+            </div>
+            <div class="recipe-content">
+                <p class="recipe-tags">
+                    <span class="recipe-tag"> Pepperoni Pizza</span>
+                    <span class="recipe-tag">Main dish</span>
+                </p>
 
-            <h1 class="recipe-title"><a href="#"> Pepperoni Pizza Pan Pizza</a></h1>
+                <h1 class="recipe-title"><a href="#"> Pepperoni Pizza Pan Pizza</a></h1>
 
-            <p class="recipe-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                <p class="recipe-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
 
-            <button class="recipe-save flex" type="button" onclick="window.location.href= '#'">
-                <i class="fa-solid fa-play"></i>
-            </button>
+                <button class="recipe-save flex" type="button" onclick="window.location.href= '#'">
+                    <i class="fa-solid fa-play"></i>
+                </button>
 
-        </div>
-    </article>
-    <article class="recipe">
-        <div class="pizza-box">
-            <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg" width="1500"
-                 height="1368" alt="">
-        </div>
-        <div class="recipe-content">
-            <p class="recipe-tags">
-                <span class="recipe-tag"> Pepperoni Pizza</span>
-                <span class="recipe-tag">Main dish</span>
-            </p>
+            </div>
+        </article>
+        <article class="recipe">
+            <div class="pizza-box">
+                <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg" width="1500"
+                    height="1368" alt="">
+            </div>
+            <div class="recipe-content">
+                <p class="recipe-tags">
+                    <span class="recipe-tag"> Pepperoni Pizza</span>
+                    <span class="recipe-tag">Main dish</span>
+                </p>
 
-            <h1 class="recipe-title"><a href="#"> Pepperoni Pizza Pan Pizza</a></h1>
+                <h1 class="recipe-title"><a href="#"> Pepperoni Pizza Pan Pizza</a></h1>
 
-            <p class="recipe-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                <p class="recipe-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
 
-            <button class="recipe-save flex" type="button" onclick="window.location.href= '#'">
-                <i class="fa-solid fa-play"></i>
-            </button>
+                <button class="recipe-save flex" type="button" onclick="window.location.href= '#'">
+                    <i class="fa-solid fa-play"></i>
+                </button>
 
-        </div>
-    </article>
-</div>
-<script type="text/javascript">
-    $("#expand").click(function (e) {
-        e.preventDefault();
-        showMore();
-    });
-    $(".small .recipe-desc").click(function (e) {
-        e.preventDefault();
-        showMore();
+            </div>
+        </article>
+    </div>
+    <script type="text/javascript">
+        $("#expand").click(function (e) {
+            e.preventDefault();
+            showMore();
+        });
+        $(".small .recipe-desc").click(function (e) {
+            e.preventDefault();
+            showMore();
 
-    });
-    function  showMore(){
-        $("#expand > svg").toggleClass("fa-bars");
-        $("#expand > svg").toggleClass("fa-bars-staggered");
+        });
+        function showMore() {
+            $("#expand > svg").toggleClass("fa-bars");
+            $("#expand > svg").toggleClass("fa-bars-staggered");
 
-        $("#mealCont").toggleClass("small");
-        $("#mealCont").toggleClass("big");
-    }
-</script>
+            $("#mealCont").toggleClass("small");
+            $("#mealCont").toggleClass("big");
+        }
+    </script>
 </body>
 
 </html>

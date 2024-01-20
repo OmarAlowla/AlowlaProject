@@ -32,11 +32,11 @@ public class SpringRun {
 	}
 
 	@GetMapping("/show")
-	public String show(@RequestParam(value = "search", defaultValue = "null") String search , @RequestParam(value = "lang", defaultValue = "null") String lang) {
+	public String show(@RequestParam(value = "search", defaultValue = "null") String search ) {
 		try {
 
 			Resource resource = resourceLoader.getResource("classpath:show.html");
-			System.out.println(lang);
+
 
 			ct.SearchFood(search);
 			return Files.lines(Paths.get(resource.getURI())).collect(Collectors.joining("\n"));
