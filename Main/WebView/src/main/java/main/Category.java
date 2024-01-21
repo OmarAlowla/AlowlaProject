@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Category implements Filters {
 
-  private List<CategoryItem> meals;
+  private List<CategoryItem> cats;
 
-  public List<CategoryItem> getMeals() {
-    return meals;
+  public List<CategoryItem> getCats() {
+    return cats;
   }
 
   public void setMeals(List<CategoryItem> meals) {
-    this.meals = meals;
+    this.cats = meals;
   }
 
   @Override
@@ -21,6 +21,8 @@ public class Category implements Filters {
     String response = new UrlToJson(URL).getResponse();
     Gson gson = new Gson();
     Category list = gson.fromJson(response, Category.class);
-    setMeals(list.getMeals());
+    setMeals(list.getCats());
   }
+
+
 }

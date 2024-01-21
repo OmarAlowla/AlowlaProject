@@ -63,6 +63,10 @@
             gap: 1em;
         }
 
+        .searchBox>* {
+            cursor: pointer;
+        }
+
         .searchBox {
             background: #2f3640;
             height: 40px;
@@ -72,14 +76,14 @@
         }
 
         .searchBox:hover>.searchInput {
-            width: 350px;
+            width: 250px;
             padding: 0 6px;
             transition: all 0.3s ease-in-out;
             /* Added transition property here */
         }
 
         .searchBox:hover {
-            width: 350px;
+            width: 250px;
             padding: 0 6px;
             transition: all 0.3s ease-in-out;
             /* Added transition property here */
@@ -231,6 +235,8 @@
             margin: auto;
             display: flex;
             flex-wrap: wrap;
+            transition: all 200ms ease-in-out;
+            ;
         }
 
         .small {
@@ -239,6 +245,8 @@
             align-items: center;
             width: 100vw;
             flex-wrap: wrap;
+            transition: all 200ms ease-in-out;
+            ;
         }
 
         .small .recipe {
@@ -273,6 +281,10 @@
             cursor: pointer;
         }
 
+        .lang-select>* {
+            color: #2f3640;
+        }
+
         .lang-select {
             text-align: center;
             margin-left: -5px;
@@ -282,16 +294,19 @@
     </style>
 
 
-    <title>AlowlaProject</title>
+    <title>Random Meal</title>
 </head>
 
 <body>
     <nav class="flex">
-        <a href="#"><b>Random Meal</b></a>
-        <a href="#"><b>Ingredient to Meal</b></a>
+        <a href="./showRandom"><b>Random Meal</b></a>
+        <a href="./show"><b>Ingredient to Meal</b></a>
     </nav>
     <div class="searchCont flex">
 
+        <button class="searchButton" type="submit" id="expand">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <form action="">
             <div class="searchBox">
 
@@ -304,9 +319,6 @@
 
             </div>
         </form>
-        <button class="searchButton" type="submit" id="expand">
-            <i class="fa-solid fa-bars"></i>
-        </button>
         <div class="searchBox">
 
             <select name="lang" class="searchInput lang-select">
@@ -319,9 +331,35 @@
             </button>
 
         </div>
-        <button class="searchButton" type="submit"
-            onclick="window.location.href = window.location.href + '?lang=de-de'">
-        </button>
+        <div class="searchBox">
+
+            <select name="lang" class="searchInput lang-select">
+                <option value="test">test</option>
+                <option value="test">test</option>
+                <option value="test">test</option>
+
+            </select>
+            <button class="searchButton">
+                <i class="fa-solid fa-layer-group"></i>
+            </button>
+
+        </div>
+
+
+        <div class="searchBox">
+
+            <select name="lang" class="searchInput lang-select">
+                <option value="test">test</option>
+                <option value="test">test</option>
+                <option value="test">test</option>
+
+            </select>
+            <button class="searchButton">
+                <i class="fa-solid fa-location-dot"></i>
+            </button>
+
+        </div>
+
     </div>
 
     <div class="small" id="mealCont">

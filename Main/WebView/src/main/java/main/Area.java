@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Area implements Filters {
 
-  private List<AreaItem> meals;
+  private List<AreaItem> areas;
 
-  public List<AreaItem> getMeals() {
-    return meals;
+  public List<AreaItem> getAreas() {
+    return areas;
   }
 
-  public void setMeals(List<AreaItem> meals) {
-    this.meals = meals;
+  public void setAreas(List<AreaItem> areas) {
+    this.areas = areas;
   }
 
   @Override
@@ -21,6 +21,6 @@ public class Area implements Filters {
     String response = new UrlToJson(URL).getResponse();
     Gson gson = new Gson();
     Area list = gson.fromJson(response, Area.class);
-    setMeals(list.getMeals());
+    setAreas(list.getAreas());
   }
 }
