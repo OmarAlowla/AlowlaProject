@@ -1,28 +1,38 @@
 package main;
 
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.core.io.Resource;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
-public class CookieUtil {
 
-    public static void addRandomArrayCookie(HttpServletResponse response, String[] randomArray) {
+public class CookieUtil {
+    public void newCookie(String[] array, String name,HttpServletResponse response, Resource resource) throws UnsupportedEncodingException {
+        jakarta.servlet.http.Cookie cookie;
         try {
-            String encodedRandomArray = URLEncoder.encode(String.join(",", randomArray), "UTF-8");
-            Cookie cookie = new Cookie("randomArray", encodedRandomArray);
+            String encodedArray = URLEncoder.encode(
+                    String.join(",", array),
+                    "UTF-8"
+            );
+            cookie = new Cookie(name, encodedArray);
+            response = wirteFile(response,resource);
             response.addCookie(cookie);
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            // Handle the exception according to your requirements
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
-
-    public static String readFileContent(String filePath) throws IOException {
-        return Files.lines(Paths.get(filePath)).collect(Collectors.joining("\n"));
+    public HttpServletResponse wirteFile(HttpServletResponse response, Resource resource) throws IOException {
+        response.getWriter().write(
+                Files.lines(Paths.get(resource.getURI())).collect(Collectors.joining("\n"))
+        );
+        return response;
     }
 }

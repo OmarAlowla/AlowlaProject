@@ -1,11 +1,8 @@
 package main;
-
-import org.springframework.stereotype.Component;
 import com.google.gson.Gson;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
 public class Controller {
     Category cat = new Category();
     Area area = new Area();
