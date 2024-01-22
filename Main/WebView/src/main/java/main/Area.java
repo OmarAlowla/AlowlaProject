@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Area implements Filters {
 
-  private List<AreaItem> areas;
+  private List<AreaItem> meals;
 
-  public List<AreaItem> getAreas() {
-    return areas;
+  public List<AreaItem> getMeals() {
+    return meals;
   }
 
-  public void setAreas(List<AreaItem> areas) {
-    this.areas = areas;
+  public void setMeals(List<AreaItem> meals) {
+    this.meals = meals;
   }
 
   @Override
@@ -20,7 +20,13 @@ public class Area implements Filters {
     String URL = "https://www.themealdb.com/api/json/v1/1/list.php?a=list";
     String response = new UrlToJson(URL).getResponse();
     Gson gson = new Gson();
-    Area list = gson.fromJson(response, Area.class);
-    setAreas(list.getAreas());
+    Area area = gson.fromJson(response, Area.class);
+
+    if (area != null && area.getMeals() != null) {
+      setMeals(area.getMeals());
+
+    } else {
+      System.out.println("Error: Unable to parse the JSON response.");
+    }
   }
 }

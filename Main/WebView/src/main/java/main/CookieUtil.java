@@ -1,13 +1,14 @@
 package main;
 
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
-
 public class CookieUtil {
 
     public static void addRandomArrayCookie(HttpServletResponse response, String[] randomArray) {
@@ -15,7 +16,7 @@ public class CookieUtil {
             String encodedRandomArray = URLEncoder.encode(String.join(",", randomArray), "UTF-8");
             Cookie cookie = new Cookie("randomArray", encodedRandomArray);
             response.addCookie(cookie);
-        } catch (IOException e) {
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             // Handle the exception according to your requirements
         }

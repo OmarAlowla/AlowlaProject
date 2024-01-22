@@ -1,9 +1,11 @@
 package main;
 
+import org.springframework.stereotype.Component;
 import com.google.gson.Gson;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class Controller {
     Category cat = new Category();
     Area area = new Area();
@@ -23,17 +25,20 @@ public class Controller {
     public void fill() {
         cat.fill();
         area.fill();
+        areaArray = new String[30];
+        catArray = new String[30];
         randomArray = new String[10];
-        areas = area.getAreas();
 
-        // Check if areas is not null before iterating
-        if (areas != null) {
-            for (AreaItem areaItem : areas) {
-                System.out.println(areaItem.getName());
-            }
-        } else {
-            System.out.println("Areas list is null");
-        }
+      for (CategoryItem categoryItem : cat.getMeals()) {
+        catArray[c] = categoryItem.getName();
+        c++;
+      }
+      c = 0;
+      for (AreaItem areaItem : area.getMeals()) {
+        areaArray[c] = areaItem.getName();
+        c++;
+      }
+
     }
   public void SearchFood(String ing) {
     String URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ing;
@@ -55,8 +60,6 @@ public class Controller {
         Arrays.stream(foods).forEach(System.out::println);
       } else if (type.equals("random") && c < randomArray.length) {
         randomArray[c] = foods[0].toString();
-      } else {
-        System.out.println("Type unknown");
       }
     } else {
       System.out.println(
