@@ -14,7 +14,7 @@
  }
 
  ::-webkit-scrollbar {
-     display: inerheit;
+     display: none;
  }
 
  .flex {
@@ -218,7 +218,7 @@
      margin: auto;
      display: flex;
      flex-wrap: wrap;
-     transition: all 200ms ease-in-out;
+     transition: all 200ms ease-in-out !important;
  }
 
  .small {
