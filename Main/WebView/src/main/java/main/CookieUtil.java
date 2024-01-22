@@ -21,7 +21,6 @@ public class CookieUtil {
                     "UTF-8"
             );
             cookie = new Cookie(name, encodedArray);
-            response = wirteFile(response,resource);
             response.addCookie(cookie);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);

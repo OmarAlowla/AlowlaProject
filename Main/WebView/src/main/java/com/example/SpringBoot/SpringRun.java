@@ -1,6 +1,5 @@
 package com.example.SpringBoot;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -12,9 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Collectors;
+
 
 @SpringBootApplication
 @Controller
@@ -27,6 +24,7 @@ public class SpringRun {
 
   public static void main(String[] args) {
     SpringApplication.run(SpringRun.class, args);
+
   }
 
   @GetMapping("/hello")
@@ -35,14 +33,13 @@ public class SpringRun {
   }
 
   @GetMapping("/show")
-  public void show(
-          @RequestParam(value = "search", defaultValue = "null") String search,
-          HttpServletResponse response
-  ) {
+  public void show(@RequestParam(value = "search", defaultValue = "null") String search, HttpServletResponse response)
+  {
     try {
       Resource resource = resourceLoader.getResource("classpath:show.html");
       cu.newCookie(ct.areaArray, "areas",response,resource);
       cu.newCookie(ct.catArray, "cats",response,resource);
+      cu.wirteFile(response,resource);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -51,8 +48,10 @@ public class SpringRun {
   @GetMapping("/showRandom")
   public void showRandom(HttpServletResponse response) {
     try {
+
       Resource resource = resourceLoader.getResource("classpath:showRandom.html");
-      cu.newCookie(ct.randomArray, "randomArray0",response,resource);
+      cu.newCookie(ct.randomArray, "randomArray",response,resource);
+      cu.wirteFile(response,resource);
     } catch (IOException e) {
       e.printStackTrace();
     }
