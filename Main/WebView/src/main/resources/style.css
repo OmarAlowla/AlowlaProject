@@ -1,277 +1,272 @@
+ * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            overflow-x: hidden;
+        }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    overflow-x: hidden;
-}
+        :root {
+            --primary: #e05d26;
+            --grey: #454545;
+            --lightgrey: #666;
+        }
 
-:root {
-    --primary: #e05d26;
-    --grey: #454545;
-    --lightgrey: #666;
-}
+        ::-webkit-scrollbar {
+            display: none;
+        }
 
-::-webkit-scrollbar {
-    display: none;
-}
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        nav {
+            width: 100%;
+            gap: 1em;
+            padding: 2em 0;
+        }
 
-nav {
-    width: 100%;
-    gap: 1em;
-    padding: 2em 0;
-}
+        nav a {
+            color: white;
+            font-size: 2em;
+            text-transform: capitalize;
+        }
 
-nav a {
-    color: white;
-    font-size: 2em;
-    text-transform: capitalize;
-}
+        body {
+            background-image: linear-gradient(to right, #cb2d3e, #ef473a);
+        }
 
-body {
-    background-image: linear-gradient(to right, #cb2d3e, #ef473a);
-}
+        .searchCont {
+            position: relative;
+            width: 100vw;
+            height: 5em;
+            gap: 1em;
+        }
 
-.searchCont {
-    position: relative;
-    width: 100vw;
-    height: 5em;
-    gap: 1em;
-}
+        .searchBox>* {
+            cursor: pointer;
+        }
 
-.searchBox>* {
-    cursor: pointer;
-}
+        .searchBox {
+            background: #2f3640;
+            height: 40px;
+            border-radius: 40px;
+            width: 40px;
+            position: relative;
+        }
 
-.searchBox {
-    background: #2f3640;
-    height: 40px;
-    border-radius: 40px;
-    width: 40px;
-    position: relative;
-}
+        .searchBox:hover>.searchInput {
+            width: 250px;
+            padding: 0 6px;
+            transition: all 0.3s ease-in-out;
+            /* Added transition property here */
+        }
 
-.searchBox:hover>.searchInput {
-    width: 250px;
-    padding: 0 6px;
-    transition: all 0.3s ease-in-out;
-    /* Added transition property here */
-}
+        .searchBox:hover {
+            width: 250px;
+            padding: 0 6px;
+            transition: all 0.3s ease-in-out;
+            /* Added transition property here */
+        }
 
-.searchBox:hover {
-    width: 250px;
-    padding: 0 6px;
-    transition: all 0.3s ease-in-out;
-    /* Added transition property here */
-}
+        .searchBox:hover>.searchButton {
+            position: absolute;
+            background: white;
+            color: #2f3640;
+            right: 0;
+            transition: all 0.3s ease-in-out;
+        }
 
-.searchBox:hover>.searchButton {
-    position: absolute;
-    background: white;
-    color: #2f3640;
-    right: 0;
-    transition: all 0.3s ease-in-out;
-}
+        .searchButton {
+            color: white;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2f3640;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 9;
+            transition: all 0.5s ease-in-out;
+        }
 
-.searchButton {
-    color: white;
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #2f3640;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 9;
-    transition: all 0.5s ease-in-out;
-}
+        .searchInput {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 16px;
+            line-height: 40px;
+            width: 0px;
+            transition: all 0.1s ease-in-out;
+            /* Changed duration to match :hover state */
+        }
 
-.searchInput {
-    border: none;
-    background: none;
-    outline: none;
-    float: left;
-    padding: 0;
-    color: white;
-    font-size: 16px;
-    line-height: 40px;
-    width: 0px;
-    transition: all 0.1s ease-in-out;
-    /* Changed duration to match :hover state */
-}
+        @media screen and (max-width: 620px) {
+            .searchBox:hover>.searchInput {
+                width: 150px;
+                padding: 0 6px;
+                transition: all 0.3s ease-in-out;
+                /* Added transition property here */
+            }
+        }
 
-@media screen and (max-width: 620px) {
-    .searchBox:hover>.searchInput {
-        width: 150px;
-        padding: 0 6px;
-        transition: all 0.3s ease-in-out;
-        /* Added transition property here */
-    }
-}
+        #mealCont {
+            gap: 3em;
+        }
 
-#mealCont {
-    gap: 3em;
-}
+        .recipe,
+        .pizza-box {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background: white;
+        }
 
-.recipe,
-.pizza-box {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    background: white;
-}
+        .pizza-box {
+            flex: 3 1 30ch;
+            height: calc(282px + 5vw);
+            overflow: hidden;
+        }
 
-.pizza-box {
-    flex: 3 1 30ch;
-    height: calc(282px + 5vw);
-    overflow: hidden;
-}
+        .pizza-box img {
+            max-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            object-position: 50% 50%;
+        }
 
-.pizza-box img {
-    max-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: cover;
-    object-position: 50% 50%;
-}
+        .recipe {
+            border: 2px solid #f2f2f2;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-.recipe {
-    border: 2px solid #f2f2f2;
-    border-radius: 8px;
-    overflow: hidden;
-}
+        .recipe-content {
+            padding: 16px 32px;
+            flex: 4 1 40ch;
+        }
 
-.recipe-content {
-    padding: 16px 32px;
-    flex: 4 1 40ch;
-}
+        .recipe-tags {
+            margin: 0 -8px;
+        }
 
-.recipe-tags {
-    margin: 0 -8px;
-}
+        .recipe-tag {
+            display: inline-block;
+            margin: 8px;
+            font-size: 0.875em;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--primary);
+        }
 
-.recipe-tag {
-    display: inline-block;
-    margin: 8px;
-    font-size: 0.875em;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--primary);
-}
+        .recipe-title {
+            margin: 0;
+            font-size: clamp(1.4em, 2.1vw, 2.1em);
+            font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+        }
 
-.recipe-title {
-    margin: 0;
-    font-size: clamp(1.4em, 2.1vw, 2.1em);
-    font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
-}
+        .recipe-title a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-.recipe-title a {
-    text-decoration: none;
-    color: inherit;
-}
+        .recipe-metadata {
+            margin: 0;
+        }
 
-.recipe-metadata {
-    margin: 0;
-}
+        .recipe-rating {
+            font-size: 1.2em;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
 
-.recipe-rating {
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    color: var(--primary);
-}
+        .recipe-rating span {
+            color: var(--grey);
+        }
 
-.recipe-rating span {
-    color: var(--grey);
-}
+        .recipe-votes {
+            font-size: 0.825em;
+            font-style: italic;
+            color: var(--lightgrey);
+        }
 
-.recipe-votes {
-    font-size: 0.825em;
-    font-style: italic;
-    color: var(--lightgrey);
-}
+        .recipe-save {
+            position: relative;
+            padding: 6px 14px 6px 14px;
+            border-radius: 4px;
+            border: 2px solid currentColor;
+            color: var(--primary);
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.recipe-save {
-    position: relative;
-    padding: 6px 14px 6px 14px;
-    border-radius: 4px;
-    border: 2px solid currentColor;
-    color: var(--primary);
-    background: none;
-    cursor: pointer;
-    font-weight: bold;
-}
+        .big {
+            width: clamp(320px, 65%, 65%);
+            padding: 24px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-.big {
-    width: clamp(320px, 65%, 65%);
-    padding: 24px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    transition: all 200ms ease-in-out;
-    ;
-}
+        .small {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            flex-wrap: wrap;
+        }
 
-.small {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    flex-wrap: wrap;
-    transition: all 200ms ease-in-out;
-    ;
-}
+        .small .recipe {
+            flex-direction: column;
+            position: relative;
+            width: 350px;
+        }
 
-.small .recipe {
-    flex-direction: column;
-    position: relative;
-    width: 350px;
-}
+        .small .pizza-box {
+            flex: 0;
+        }
 
-.small .pizza-box {
-    flex: 0;
-}
+        .small .recipe-content {
+            display: grid;
+            position: absolute;
+            bottom: -100%;
+            background-color: rgb(255, 255, 255, 0.8);
+            transition: bottom .5s ease-in-out;
+            gap: 1em;
+            height: auto;
+        }
 
-.small .recipe-content {
-    display: grid;
-    position: absolute;
-    bottom: -100%;
-    background-color: rgb(255, 255, 255, 0.8);
-    transition: bottom .5s ease-in-out;
-    gap: 1em;
-    height: auto;
-}
+        .small .recipe:hover .recipe-content {
+            bottom: 0;
+        }
 
-.small .recipe:hover .recipe-content {
-    bottom: 0;
-}
+        .small .recipe-desc {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            cursor: pointer;
+        }
 
-.small .recipe-desc {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    cursor: pointer;
-}
+        .lang-select>* {
+            color: #2f3640;
+        }
 
-.lang-select>* {
-    color: #2f3640;
-}
-
-.lang-select {
-    text-align: center;
-    margin-left: -5px;
-    z-index: 8;
-    height: 100%;
-}
+        .lang-select {
+            text-align: center;
+            margin-left: -5px;
+            z-index: 8;
+            height: 100%;
+        }
