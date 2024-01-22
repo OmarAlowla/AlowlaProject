@@ -51,8 +51,6 @@ public class Controller {
   }
 
   private void handleFood(boolean isNotNull, Food[] foods, String type) {
-    c++;
-
     if (isNotNull && foods != null) {
       if (type.equals("food")) {
         Arrays.stream(foods).forEach(System.out::println);
@@ -64,6 +62,7 @@ public class Controller {
         "No " + (type.equals("food") ? "foods" : "meals") + " found"
       );
     }
+    c++;
   }
 
   public void RandomMeal() {

@@ -220,7 +220,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     transition: all 200ms ease-in-out;
-    ;
 }
 
 .small {
@@ -230,7 +229,6 @@ body {
     width: 100vw;
     flex-wrap: wrap;
     transition: all 200ms ease-in-out;
-    ;
 }
 
 .small .recipe {
