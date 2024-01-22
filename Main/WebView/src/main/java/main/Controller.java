@@ -35,7 +35,7 @@ public class Controller {
         areaArray[c] = areaItem.getName();
         c++;
       }
-
+      c = 0;
     }
   public void SearchFood(String ing) {
     String URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ing;
@@ -52,6 +52,7 @@ public class Controller {
 
   private void handleFood(boolean isNotNull, Food[] foods, String type) {
     c++;
+
     if (isNotNull && foods != null) {
       if (type.equals("food")) {
         Arrays.stream(foods).forEach(System.out::println);
