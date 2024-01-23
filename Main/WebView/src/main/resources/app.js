@@ -73,8 +73,8 @@ for (let i = 2; i < cookiesToCheck.length; i++) {
             </div>
             <div class="recipe-content">
                 <p class="recipe-tags">
-                    <span class="recipe-tag-cat">${cat}</span>
-                    <span class="recipe-tag-area">${area}</span>
+                    <span class="recipe-tag recipe-tag-cat">${cat}</span>
+                    <span class="recipe-tag recipe-tag-area">${area}</span>
                 </p>
     
                 <h1 class="recipe-title"><a>${name}</a></h1>

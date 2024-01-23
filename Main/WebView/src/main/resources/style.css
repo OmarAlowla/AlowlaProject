@@ -235,7 +235,10 @@
      transition: all 200ms ease-in-out;
  }
 
-
+ .big p.recipe-desc{
+    max-height: 216px;
+    overflow-y: scroll;
+ }
 
  .small .recipe {
      flex-direction: column;
