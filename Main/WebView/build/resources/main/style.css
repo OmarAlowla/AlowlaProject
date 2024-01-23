@@ -160,7 +160,7 @@
      margin: 0 -8px;
  }
 
- .recipe-tag-cat,.recipe-tag-area {
+ .recipe-tag-cat, .recipe-tag-area {
      display: inline-block;
      margin: 8px;
      font-size: 0.875em;
@@ -211,10 +211,11 @@
      cursor: pointer;
      font-weight: bold;
  }
+
  .big .recipe-save {
 
-    width: 30%;
-    margin-top: 1em;
+     width: 30%;
+     margin-top: 1em;
  }
 
  .big {
@@ -235,9 +236,9 @@
      transition: all 200ms ease-in-out;
  }
 
- .big p.recipe-desc{
-    max-height: 216px;
-    overflow-y: scroll;
+ .big p.recipe-desc {
+     max-height: 216px;
+     overflow-y: scroll;
  }
 
  .small .recipe {
@@ -265,7 +266,7 @@
      bottom: 0;
  }
 
- .small .recipe-desc {  
+ .small .recipe-desc {
      overflow: hidden;
      display: -webkit-box;
      -webkit-line-clamp: 3;

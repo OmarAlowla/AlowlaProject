@@ -35,15 +35,12 @@ public class SpringRun {
 
   @GetMapping("/show")
   public void show(
-    @RequestParam(value = "search", defaultValue = "null") String search,
+    @RequestParam(value = "search", defaultValue = "beef") String search,
     HttpServletResponse response
   ) {
     try {
       Arrays.fill(ct.searchArray, null);
       ct.fillMeals(search);
-      for (int i = 0; i < ct.searchArray.length; i++) {
-        System.out.println(ct.searchArray[i]);
-      }
       Resource resource = resourceLoader.getResource("classpath:show.html");
       cu.newCookie(ct.searchArray, "SearchArray", response, resource);
       cu.newCookie(ct.areaArray, "areas", response, resource);

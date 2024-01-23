@@ -17,12 +17,43 @@
     <link rel="stylesheet" href="http://127.0.0.1:5500/src/main/resources/style.css">
     <script src="http://127.0.0.1:5500/src/main/resources/app.js" defer></script>
     <title>Search Meal</title>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'de,en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate');
+        }
+    </script>
+    <!-- Include the Google Translate API script -->
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function changeLanguage(selectedLanguage) {
+            var translateDropdown = document.querySelector('.goog-te-combo');
+            if (!translateDropdown) {
+                var translateFrame = document.querySelector('.goog-te-menu-frame');
+                if (translateFrame) {
+                    var iframeDocument = translateFrame.contentDocument || translateFrame.contentWindow.document;
+                    translateDropdown = iframeDocument.querySelector('.goog-te-combo');
+                }
+            }
+
+            if (translateDropdown) {
+                translateDropdown.value = selectedLanguage;
+                translateDropdown.dispatchEvent(new Event('change'));
+            } else {
+                console.error('Translation dropdown not found. Check the class name or Google Translate structure.');
+            }
+        }
+    </script>
 </head>
 
 <body>
     <nav class="flex">
         <a href="./showRandom"><b>Random Meal</b></a>
-        <a href="./show"><b>Ingredient to Meal</b></a>
+        <a href="./show"><b>Search Meal</b></a>
     </nav>
     <div class="searchCont flex">
 
@@ -42,16 +73,13 @@
             </div>
         </form>
         <div class="searchBox">
-
-            <select name="lang" class="searchInput lang-select">
-                <option value="de-de">Deutsch</option>
-                <option selected="us-en">English</option>
-            </select>
+            
+            <div  class="searchInput lang-select" onchange="changeLanguage(this.value)">
+                <div id="google_translate"></div>
+            </div>
             <button class="searchButton">
                 <i class="fa-solid fa-language"></i>
-
             </button>
-
         </div>
         <div class="searchBox">
 
