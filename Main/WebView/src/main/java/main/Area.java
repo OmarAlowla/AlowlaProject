@@ -24,7 +24,6 @@ public class Area implements Filters {
 
     if (area != null && area.getMeals() != null) {
       setMeals(area.getMeals());
-
     } else {
       System.out.println("Error: Unable to parse the JSON response.");
     }

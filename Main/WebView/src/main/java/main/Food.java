@@ -64,7 +64,16 @@ public class Food {
 
   @Override
   public String toString() {
-    return  strMeal + " ," + strMealThumb + " ," + strCategory
-            + " ," + strArea + " ," + strYoutube ;
+    return (
+      strMeal +
+      " ," +
+      strMealThumb +
+      " ," +
+      strCategory +
+      " ," +
+      strArea +
+      " ," +
+      strYoutube
+    );
   }
 }

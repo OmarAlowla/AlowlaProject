@@ -1,4 +1,4 @@
-const cookiesToCheck = ['areas', 'cats'];
+const cookiesToCheck = ['areas', 'cats', 'SearchArray'];
 const instructions = [];
 
 $("#expand").click(function (e) {
@@ -11,25 +11,6 @@ function showMore() {
     $("#mealCont").toggleClass("small big");
 }
 
-function getLocalStorageItem(key) {
-    const value = localStorage.getItem(key);
-    if (value !== null) {
-        return value;
-    } else {
-        console.log(`Item "${key}" not found in localStorage.`);
-        return null;
-    }
-}
-
-function checkAndLogLocalStorageItem(key) {
-    const itemValue = getLocalStorageItem(key);
-    if (itemValue !== null) {
-        return itemValue;
-    } else {
-        console.log(`Item "${key}" not found.`);
-        return null;
-    }
-}
 
 function getCookie(cookieName) {
     const cookies = document.cookie.split('; ');
@@ -54,8 +35,6 @@ function checkAndLogCookie(cookieName) {
 
 for (let i = 0; i < 10; i++) {
     cookiesToCheck.push("randomArray" + i);
-    const originalValue = checkAndLogLocalStorageItem("randomInstructions" + i);
-    instructions[i] = decodeURIComponent(originalValue).replaceAll('+',' ');
 }
 
 for (let i = 0; i < cookiesToCheck.length; i++) {
@@ -63,7 +42,8 @@ for (let i = 0; i < cookiesToCheck.length; i++) {
 }
 
 $('.RandomCont').html(" ");
-for (let i = 2; i < cookiesToCheck.length; i++) {
+
+for (let i = 3; i < cookiesToCheck.length; i++) {
     const cookieInfo = cookiesToCheck[i].replaceAll('+', ' ').split(' ,');
     const [name, img, cat, area, yt] = cookieInfo;
     const element = `
@@ -73,13 +53,12 @@ for (let i = 2; i < cookiesToCheck.length; i++) {
             </div>
             <div class="recipe-content">
                 <p class="recipe-tags">
-                    <span class="recipe-tag recipe-tag-cat">${cat}</span>
-                    <span class="recipe-tag recipe-tag-area">${area}</span>
+                    <span class="recipe-tag-cat">${cat}</span>
+                    <span class="recipe-tag-area">${area}</span>
                 </p>
     
                 <h1 class="recipe-title"><a>${name}</a></h1>
     
-                <p onclick="showMore();" class="recipe-desc">${instructions[i-2]}</p>
     
                 <button class="recipe-save flex" type="button" onclick="window.location.href='${yt}'">
                     <i class="fa-solid fa-play"></i>
@@ -90,36 +69,89 @@ for (let i = 2; i < cookiesToCheck.length; i++) {
     $('.RandomCont').append(element);
 }
 
+
+$('.searchWrap').html(" ");
+
+
+const originalArray = cookiesToCheck[2].replaceAll('+', ' ').split(',');
+
+
+const splitArray = [];
+const subArrayLength = 5;
+for (let i = 0; i < originalArray.length; i += subArrayLength) {
+    const subArray = originalArray.slice(i, i + subArrayLength);
+    splitArray.push(subArray);
+}
+
+splitArray.forEach(subArray => {
+    const [name, img, cat, area, yt] = subArray;
+    if (img == '' || img == ' ' || subArray == '' || subArray == ' ' || img == 'null' || img == ',null') {
+    }
+    else {
+        const element = `
+        <article class="recipe">
+            <div class="pizza-box">
+                <img src="${img}" width="1500" height="1368" alt="">
+            </div>
+            <div class="recipe-content">
+                <p class="recipe-tags">
+                    <span class="recipe-tag-cat">${cat}</span>
+                    <span class="recipe-tag-area">${area}</span>
+                </p>
+
+                <h1 class="recipe-title"><a>${name}</a></h1>
+
+                <button class="recipe-save flex" type="button" onclick="window.location.href='${yt}'">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+            </div>
+        </article>
+    `;
+
+        $('.searchWrap').append(element);
+    }
+});
+
 const parseAndAppendOptions = (targetClass, data) => {
     const items = data.split(',null')[0].split(',');
     $(`.${targetClass}`).html(" ");
     items.forEach(item => $(`.${targetClass}`).append(`<option value='${item}'>${item}</option>`));
-    
+
 };
 
 parseAndAppendOptions("area-select", cookiesToCheck[0]);
 parseAndAppendOptions("cats-select", cookiesToCheck[1]);
 
-$('.area-select, .cats-select').on('change', function() {
-    var areaValue = $('.area-select').val();
-    var catValue = $('.cats-select').val();
 
+$(`.area-select`).on('change', function () {
+    var selectValue = $(this).val();
     $(".recipe").show();
-
-    $('.recipe').each(function() {
-        var areaTagText = $(this).find('.recipe-tag-area').text();
-        var catTagText = $(this).find('.recipe-tag-cat').text();
-
-        if ((areaValue === '' || areaTagText === areaValue) &&
-            (catValue === '' || catTagText === catValue) ) {
-            $(this).show();
+    $('.recipe-tag-area').each(function () {
+        var tagText = $(this).text();
+        var parent = $(this).closest('.recipe');
+        if (tagText == selectValue) {
+            $(parent).show();
+            console.log("true");
         } else {
-            $(this).hide();
+            $(parent).hide();
         }
     });
 });
 
-$('#showAll').click(function (e) { 
+$(`.cats-select`).on('change', function () {
+    var selectValue = $(this).val();
+    $(".recipe").show();
+    $('.recipe-tag-cat').each(function () {
+        var tagText = $(this).text();
+        var parent = $(this).closest('.recipe');
+        if (tagText == selectValue) {
+            $(parent).show();
+        } else {
+            $(parent).hide();
+        }
+    });
+});
+$('#showAll').click(function (e) {
     e.preventDefault();
     $(".recipe").show();
 });

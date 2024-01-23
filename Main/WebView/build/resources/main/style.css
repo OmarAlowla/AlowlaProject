@@ -160,7 +160,7 @@
      margin: 0 -8px;
  }
 
- .recipe-tag {
+ .recipe-tag-cat,.recipe-tag-area {
      display: inline-block;
      margin: 8px;
      font-size: 0.875em;
@@ -235,7 +235,10 @@
      transition: all 200ms ease-in-out;
  }
 
-
+ .big p.recipe-desc{
+    max-height: 216px;
+    overflow-y: scroll;
+ }
 
  .small .recipe {
      flex-direction: column;

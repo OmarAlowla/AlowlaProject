@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="http://127.0.0.1:5500/src/main/resources/style.css">
         <script src="http://127.0.0.1:5500/src/main/resources/app.js" defer></script>
         <script src="http://localhost:8080/include" defer></script>
-        <title>Search Meal</title>
+        <title>10 Random Meals</title>
 </head>
 
 <body>
@@ -30,18 +30,6 @@
         <button class="searchButton" type="submit" id="expand">
             <i class="fa-solid fa-bars"></i>
         </button>
-        <form action="">
-            <div class="searchBox">
-
-                <input class="searchInput" type="text" name="search" placeholder="Search">
-                <button class="searchButton" type="submit">
-                    <i class="material-icons">
-                        search
-                    </i>
-                </button>
-
-            </div>
-        </form>
         <div class="searchBox">
 
             <select name="lang" class="searchInput lang-select">
@@ -81,7 +69,10 @@
                 <i class="fa-solid fa-location-dot"></i>
             </button>
 
-        </div>
+        </div>        
+            <button class="searchButton" id="showAll">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
 
     </div>
 
@@ -135,3 +126,4 @@
 </body>
 
 </html>
+<script>    
