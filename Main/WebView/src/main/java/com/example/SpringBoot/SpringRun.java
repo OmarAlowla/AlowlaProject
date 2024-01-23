@@ -48,9 +48,26 @@ public class SpringRun {
   @GetMapping("/showRandom")
   public void showRandom(HttpServletResponse response) {
     try {
-
+      ct.RandomMeal();
       Resource resource = resourceLoader.getResource("classpath:showRandom.html");
-      cu.newCookie(ct.randomArray, "randomArray",response,resource);
+      for (int i = 0; i < 10; i++) {
+        cu.newCookieAsStr(ct.randomArray[i], "randomArray"+i,response,resource);
+      }
+      cu.wirteFile(response,resource);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @GetMapping("/include")
+  public void include(HttpServletResponse response) {
+    try {
+      Resource resource = resourceLoader.getResource("classpath:include.js");
+      for (int i = 0; i < 10; i++) {
+        cu.setLocalStorage(response,"randomInstructions"+i,ct.randomInstructions[i]);
+      }
+
       cu.wirteFile(response,resource);
     } catch (IOException e) {
       e.printStackTrace();

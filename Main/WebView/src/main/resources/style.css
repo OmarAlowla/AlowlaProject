@@ -211,6 +211,11 @@
      cursor: pointer;
      font-weight: bold;
  }
+ .big .recipe-save {
+
+    width: 30%;
+    margin-top: 1em;
+ }
 
  .big {
      width: clamp(320px, 65%, 65%);
@@ -249,19 +254,21 @@
      background-color: rgb(255, 255, 255, 0.8);
      transition: bottom .5s ease-in-out;
      gap: 1em;
-     height: auto;
+     height: 85%;
+     width: 100% !important;
  }
 
  .small .recipe:hover .recipe-content {
      bottom: 0;
  }
 
- .small .recipe-desc {
+ .small .recipe-desc {  
      overflow: hidden;
      display: -webkit-box;
      -webkit-line-clamp: 3;
      -webkit-box-orient: vertical;
      cursor: pointer;
+     line-height: 1.5;
  }
 
  .lang-select>* {

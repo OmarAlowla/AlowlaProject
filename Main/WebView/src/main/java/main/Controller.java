@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Controller {
-    Category cat = new Category();
-    Area area = new Area();
+  Category cat = new Category();
+  Area area = new Area();
   public String[] randomArray;
+  public String[] randomInstructions;
   public String[] areaArray;
   public String[] catArray;
 
@@ -14,29 +15,28 @@ public class Controller {
 
   List<AreaItem> areas;
   public Controller() {
-
     fill();
-    RandomMeal();
   }
 
-    public void fill() {
-        cat.fill();
-        area.fill();
-        areaArray = new String[30];
-        catArray = new String[30];
-        randomArray = new String[10];
+  public void fill() {
+    cat.fill();
+    area.fill();
+    areaArray = new String[30];
+    catArray = new String[30];
+    randomArray = new String[10];
+    randomInstructions = new String[10];
 
-      for (CategoryItem categoryItem : cat.getMeals()) {
-        catArray[c] = categoryItem.getName();
-        c++;
-      }
-      c = 0;
-      for (AreaItem areaItem : area.getMeals()) {
-        areaArray[c] = areaItem.getName();
-        c++;
-      }
-      c = 0;
+    for (CategoryItem categoryItem : cat.getMeals()) {
+      catArray[c] = categoryItem.getName();
+      c++;
     }
+    c = 0;
+    for (AreaItem areaItem : area.getMeals()) {
+      areaArray[c] = areaItem.getName();
+      c++;
+    }
+    c = 0;
+  }
   public void SearchFood(String ing) {
     String URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ing;
     endResponse(URL, "food");
@@ -55,11 +55,16 @@ public class Controller {
       if (type.equals("food")) {
         Arrays.stream(foods).forEach(System.out::println);
       } else if (type.equals("random") && c < randomArray.length) {
+        if (c == 10 || c > 10) {
+          c=0;
+        }
         randomArray[c] = foods[0].toString();
+        randomInstructions[c] = foods[0].getStrInstructions();
+
       }
     } else {
       System.out.println(
-        "No " + (type.equals("food") ? "foods" : "meals") + " found"
+              "No " + (type.equals("food") ? "foods" : "meals") + " found"
       );
     }
     c++;
@@ -74,7 +79,7 @@ public class Controller {
 
   public void fillMeals(String MealName) {
     String URL =
-      "https://www.themealdb.com/api/json/v1/1/search.php?s=" + MealName;
+            "https://www.themealdb.com/api/json/v1/1/search.php?s=" + MealName;
     String response = new UrlToJson(URL).getResponse();
     Gson gson = new Gson();
     Meal.FoodList meals = gson.fromJson(response, Meal.FoodList.class);

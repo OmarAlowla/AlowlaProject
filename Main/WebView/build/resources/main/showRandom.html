@@ -16,7 +16,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
         <link rel="stylesheet" href="http://127.0.0.1:5500/src/main/resources/style.css">
         <script src="http://127.0.0.1:5500/src/main/resources/app.js" defer></script>
-    <title>Random Meal</title>
+        <script src="http://localhost:8080/include" defer></script>
+        <title>Search Meal</title>
 </head>
 
 <body>
@@ -29,6 +30,18 @@
         <button class="searchButton" type="submit" id="expand">
             <i class="fa-solid fa-bars"></i>
         </button>
+        <form action="">
+            <div class="searchBox">
+
+                <input class="searchInput" type="text" name="search" placeholder="Search">
+                <button class="searchButton" type="submit">
+                    <i class="material-icons">
+                        search
+                    </i>
+                </button>
+
+            </div>
+        </form>
         <div class="searchBox">
 
             <select name="lang" class="searchInput lang-select">
@@ -43,7 +56,7 @@
         </div>
         <div class="searchBox">
 
-            <select name="lang" class="searchInput lang-select">
+            <select name="lang" class="searchInput lang-select cats-select">
                 <option value="test">test</option>
                 <option value="test">test</option>
                 <option value="test">test</option>
@@ -58,7 +71,7 @@
 
         <div class="searchBox">
 
-            <select name="lang" class="searchInput lang-select">
+            <select name="area" class="searchInput lang-select area-select">
                 <option value="test">test</option>
                 <option value="test">test</option>
                 <option value="test">test</option>
@@ -70,11 +83,9 @@
 
         </div>
 
-
-
     </div>
 
-    <div class="small" id="mealCont">
+    <div class="RandomCont small" id="mealCont">
         <article class="recipe">
             <div class="pizza-box">
                 <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg" width="1500"

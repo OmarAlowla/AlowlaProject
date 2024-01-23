@@ -1,65 +1,125 @@
+const cookiesToCheck = ['areas', 'cats'];
+const instructions = [];
+
 $("#expand").click(function (e) {
     e.preventDefault();
     showMore();
 });
-$(".small .recipe-desc").click(function (e) {
-    e.preventDefault();
-    showMore();
 
-});
 function showMore() {
-    $("#expand > svg").toggleClass("fa-bars");
-    $("#expand > svg").toggleClass("fa-bars-staggered");
-
-    $("#mealCont").toggleClass("small");
-    $("#mealCont").toggleClass("big");
+    $("#expand > svg").toggleClass("fa-bars fa-bars-staggered");
+    $("#mealCont").toggleClass("small big");
 }
-$(document).ready(function () {
 
-    function getCookie(cookieName) {
-        const cookies = document.cookie.split('; ');
-
-        for (const cookie of cookies) {
-            const [name, value] = cookie.split('=');
-
-            if (name === cookieName) {
-                return decodeURIComponent(value);
-            }
-        }
-
+function getLocalStorageItem(key) {
+    const value = localStorage.getItem(key);
+    if (value !== null) {
+        return value;
+    } else {
+        console.log(`Item "${key}" not found in localStorage.`);
         return null;
     }
+}
 
-    function checkAndLogCookie(cookieName) {
-        const cookieValue = getCookie(cookieName);
+function checkAndLogLocalStorageItem(key) {
+    const itemValue = getLocalStorageItem(key);
+    if (itemValue !== null) {
+        return itemValue;
+    } else {
+        console.log(`Item "${key}" not found.`);
+        return null;
+    }
+}
 
-        if (cookieValue !== null) {
-            return cookieValue;
-        } else {
-            console.log(`Cookie "${cookieName}" not found.`);
-            return null;
+function getCookie(cookieName) {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === cookieName) {
+            return decodeURIComponent(value);
         }
     }
+    return null;
+}
 
-    const cookiesToCheck = ['areas', 'cats', 'randomArray'];
-
-
-
-    for (let i = 0; i < cookiesToCheck.length; i++) {
-        
-        cookiesToCheck[i] = checkAndLogCookie(cookiesToCheck[i]);
+function checkAndLogCookie(cookieName) {
+    const cookieValue = getCookie(cookieName);
+    if (cookieValue !== null) {
+        return cookieValue;
+    } else {
+        console.log(`Cookie "${cookieName}" not found.`);
+        return null;
     }
-    var areas = cookiesToCheck[0].split(',null');
-    areas = areas[0].split(',');
-    $(".area-select").html(" ");
-    for (let i = 0; i < areas.length; i++) {
-        $(".area-select").append("<option value='"+areas[i]+"'>"+areas[i]+"</option>");
-    }
-    var cats = cookiesToCheck[1].split(',null');
-    cats = cats[0].split(',');
+}
+
+for (let i = 0; i < 10; i++) {
+    cookiesToCheck.push("randomArray" + i);
+    const originalValue = checkAndLogLocalStorageItem("randomInstructions" + i);
+    instructions[i] = decodeURIComponent(originalValue).replaceAll('+',' ');
+}
+
+for (let i = 0; i < cookiesToCheck.length; i++) {
+    cookiesToCheck[i] = checkAndLogCookie(cookiesToCheck[i]);
+}
+
+$('.RandomCont').html(" ");
+for (let i = 2; i < cookiesToCheck.length; i++) {
+    const cookieInfo = cookiesToCheck[i].replaceAll('+', ' ').split(' ,');
+    const [name, img, cat, area, yt] = cookieInfo;
+    const element = `
+        <article class="recipe">
+            <div class="pizza-box">
+                <img src="${img}" width="1500" height="1368" alt="">
+            </div>
+            <div class="recipe-content">
+                <p class="recipe-tags">
+                    <span class="recipe-tag-cat">${cat}</span>
+                    <span class="recipe-tag-area">${area}</span>
+                </p>
     
-    $(".cats-select").html(" ");
-    for (let i = 0; i < cats.length; i++) {
-        $(".cats-select").append("<option value='"+cats[i]+"'>"+cats[i]+"</option>");
-    }
+                <h1 class="recipe-title"><a>${name}</a></h1>
+    
+                <p onclick="showMore();" class="recipe-desc">${instructions[i-2]}</p>
+    
+                <button class="recipe-save flex" type="button" onclick="window.location.href='${yt}'">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+            </div>
+        </article>
+    `;
+    $('.RandomCont').append(element);
+}
+
+const parseAndAppendOptions = (targetClass, data) => {
+    const items = data.split(',null')[0].split(',');
+    $(`.${targetClass}`).html(" ");
+    items.forEach(item => $(`.${targetClass}`).append(`<option value='${item}'>${item}</option>`));
+    
+};
+
+parseAndAppendOptions("area-select", cookiesToCheck[0]);
+parseAndAppendOptions("cats-select", cookiesToCheck[1]);
+
+$('.area-select, .cats-select').on('change', function() {
+    var areaValue = $('.area-select').val();
+    var catValue = $('.cats-select').val();
+
+    $(".recipe").show();
+
+    $('.recipe').each(function() {
+        var areaTagText = $(this).find('.recipe-tag-area').text();
+        var catTagText = $(this).find('.recipe-tag-cat').text();
+
+        if ((areaValue === '' || areaTagText === areaValue) &&
+            (catValue === '' || catTagText === catValue) ) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+
+$('#showAll').click(function (e) { 
+    e.preventDefault();
+    $(".recipe").show();
 });
