@@ -11,7 +11,7 @@ function showMore() {
     $("#mealCont").toggleClass("small big");
 }
 
-
+noData();
 function getCookie(cookieName) {
     const cookies = document.cookie.split('; ');
     for (const cookie of cookies) {
@@ -50,7 +50,7 @@ const splitArray = [];
 const subArrayLength = 5;
 for (let i = 0; i < originalArray.length; i += subArrayLength) {
     const subArray = originalArray.slice(i, i + subArrayLength);
-    splitArray.push(subArray);  
+    splitArray.push(subArray);
 }
 
 splitArray.forEach(subArray => {
@@ -71,7 +71,7 @@ splitArray.forEach(subArray => {
 
                 <h1 class="recipe-title"><a>${name}</a></h1>
 
-                <button class="recipe-save flex" type="button" onclick="window.location.href='${yt}'">
+                <button class="recipe-save flex" type="button" onclick="onclick="window.open('${yt}', '_blank'); return false;"">
                     <i class="fa-solid fa-play"></i>
                 </button>
             </div>
@@ -101,7 +101,7 @@ for (let i = 3; i < cookiesToCheck.length; i++) {
                 <h1 class="recipe-title"><a>${name}</a></h1>
     
     
-                <button class="recipe-save flex" type="button" onclick="window.location.href='${yt}'">
+                <button class="recipe-save flex" type="button" onclick="window.open('${yt}', '_blank'); return false;">
                     <i class="fa-solid fa-play"></i>
                 </button>
             </div>
@@ -127,24 +127,25 @@ $(`.area-select`).on('change', function () {
     var selectValue = $(this).val();
     $(".recipe").show();
     $('.recipe-tag-area').each(function () {
-        var tagText = $(this).text().replaceAll(' ','');
-        
+        var tagText = $(this).text().replaceAll(' ', '');
+
         var parent = $(this).closest('.recipe');
         if (tagText == selectValue) {
             $(parent).show();
             console.log("true");
         } else {
             $(parent).hide();
-            console.log("first:" +selectValue +"Second"+tagText);
+            console.log("first:" + selectValue + "Second" + tagText);
         }
     });
+
 });
 
 $(`.cats-select`).on('change', function () {
     var selectValue = $(this).val();
     $(".recipe").show();
     $('.recipe-tag-cat').each(function () {
-        var tagText = $(this).text().replaceAll(' ','');
+        var tagText = $(this).text().replaceAll(' ', '');
         var parent = $(this).closest('.recipe');
         if (tagText == selectValue) {
             $(parent).show();
@@ -152,8 +153,15 @@ $(`.cats-select`).on('change', function () {
             $(parent).hide();
         }
     });
+
 });
 $('#showAll').click(function (e) {
     e.preventDefault();
     $(".recipe").show();
 });
+
+function noData() {
+    if ($('.recipe:not([style*="display:none"])').length === 0) {
+        $('.searchWrap').append("<h3 id='noData'>You will starve !! No food found</h3>");
+    }
+}

@@ -285,3 +285,9 @@
      z-index: 8;
      height: 100%;
  }
+
+ #noData {
+     height: 100%;
+     text-align: center;
+     color: white;
+ }

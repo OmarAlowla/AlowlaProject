@@ -56,7 +56,7 @@
         <a href="./showRandom"><b>Random Meal</b></a>
         <a href="./show"><b>Search Meal</b></a>
     </nav>
-    <div id="google_translate"></div>
+
     <div class="searchCont flex">
 
         <button class="searchButton" type="submit" id="expand">
@@ -65,10 +65,9 @@
 
         <div class="searchBox">
             
-            <select name="lang" class="searchInput lang-select" onchange="changeLanguage(this.value)">
-                <option value="de-de">Deutsch</option>
-                <option value="en-us" selected="selected">English</option>
-            </select>
+            <div  class="searchInput lang-select" onchange="changeLanguage(this.value)">
+                <div id="google_translate"></div>
+            </div>
             <button class="searchButton">
                 <i class="fa-solid fa-language"></i>
             </button>
