@@ -1,6 +1,7 @@
 package main;
 
-public class Food {
+public class Food
+{
 
   private String strMeal;
   private String strMealThumb;
@@ -9,7 +10,8 @@ public class Food {
   private String strInstructions;
   private String strYoutube;
 
-  public Food(String strMeal, String strMealThumb) {
+  public Food(String strMeal, String strMealThumb)
+  {
     this.strMeal = strMeal;
     this.strMealThumb = strMealThumb;
   }

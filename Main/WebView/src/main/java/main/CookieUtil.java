@@ -13,49 +13,62 @@ import org.springframework.core.io.Resource;
 public class CookieUtil {
 
   public void newCookie(
-    String[] array,
-    String name,
-    HttpServletResponse response,
-    Resource resource
-  ) throws UnsupportedEncodingException {
+          String[] array,
+          String name,
+          HttpServletResponse response,
+          Resource resource
+  ) throws UnsupportedEncodingException
+  {
     jakarta.servlet.http.Cookie cookie;
-    try {
+    try
+    {
       String encodedArray = URLEncoder.encode(String.join(",", array), "UTF-8");
       cookie = new Cookie(name, encodedArray);
       response.addCookie(cookie);
-    } catch (UnsupportedEncodingException e) {
+    }
+    catch (UnsupportedEncodingException e)
+    {
       throw new RuntimeException(e);
-    } catch (IOException e) {
+    }
+    catch (IOException e)
+    {
       throw new RuntimeException(e);
     }
   }
 
   public void newCookieAsStr(
-    String array,
-    String name,
-    HttpServletResponse response,
-    Resource resource
-  ) throws UnsupportedEncodingException {
+          String array,
+          String name,
+          HttpServletResponse response,
+          Resource resource
+  ) throws UnsupportedEncodingException
+  {
     jakarta.servlet.http.Cookie cookie;
-    try {
+    try
+    {
       String encodedArray = URLEncoder.encode(String.join(",", array), "UTF-8");
       cookie = new Cookie(name, encodedArray);
       response.addCookie(cookie);
-    } catch (UnsupportedEncodingException e) {
+    }
+    catch (UnsupportedEncodingException e)
+    {
       throw new RuntimeException(e);
-    } catch (IOException e) {
+    }
+    catch (IOException e)
+    {
       throw new RuntimeException(e);
     }
   }
 
   public void wirteFile(HttpServletResponse response, Resource resource)
-    throws IOException {
+          throws IOException
+  {
     response
-      .getWriter()
-      .write(
-        Files
-          .lines(Paths.get(resource.getURI()))
-          .collect(Collectors.joining("\n"))
-      );
+            .getWriter()
+            .write(
+                    Files
+                            .lines(Paths.get(resource.getURI()))
+                            .collect(Collectors.joining("\n"))
+            );
   }
 }

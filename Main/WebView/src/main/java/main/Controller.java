@@ -4,7 +4,8 @@ import com.google.gson.Gson;
 import java.util.Arrays;
 import java.util.List;
 
-public class Controller {
+public class Controller
+{
 
   Category cat = new Category();
   Area area = new Area();
@@ -18,11 +19,13 @@ public class Controller {
 
   List<AreaItem> areas;
 
-  public Controller() {
+  public Controller()
+  {
     fill();
   }
 
-  public void fill() {
+  public void fill()
+  {
     cat.fill();
     area.fill();
     areaArray = new String[30];
@@ -31,24 +34,28 @@ public class Controller {
     randomInstructions = new String[10];
     searchArray = new String[30];
 
-    for (CategoryItem categoryItem : cat.getMeals()) {
+    for (CategoryItem categoryItem : cat.getMeals())
+    {
       catArray[c] = categoryItem.getName();
       c++;
     }
     c = 0;
-    for (AreaItem areaItem : area.getMeals()) {
+    for (AreaItem areaItem : area.getMeals())
+    {
       areaArray[c] = areaItem.getName();
       c++;
     }
     c = 0;
   }
 
-  public void SearchFood(String ing) {
+  public void searchFood(String ing)
+  {
     String URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ing;
     endResponse(URL, "food");
   }
 
-  private void endResponse(String URL, String type) {
+  private void endResponse(String URL, String type)
+  {
     String response = new UrlToJson(URL).getResponse();
     Gson gson = new Gson();
     Meals meals = gson.fromJson(response, Meals.class);
@@ -56,49 +63,66 @@ public class Controller {
     handleFood(meals != null, meals != null ? meals.getFoods() : null, type);
   }
 
-  private void handleFood(boolean isNotNull, Food[] foods, String type) {
-    if (isNotNull && foods != null) {
-      if (type.equals("food")) {} else if (
-        type.equals("random") && c < randomArray.length
-      ) {
-        if (c == 10 || c > 10) {
+  private void handleFood(boolean isNotNull, Food[] foods, String type)
+  {
+    if (isNotNull && foods != null)
+    {
+      if (type.equals("food"))
+      {
+      }
+      else if (type.equals("random") && c < randomArray.length)
+      {
+        if (c == 10 || c > 10)
+        {
           c = 0;
         }
         randomArray[c] = foods[0].toString();
         randomInstructions[c] = foods[0].getStrInstructions();
       }
-    } else {
+    }
+    else
+    {
       System.out.println(
-        "No " + (type.equals("food") ? "foods" : "meals") + " found"
+              "No " + (type.equals("food") ? "foods" : "meals") + " found"
       );
     }
     c++;
   }
 
-  public void RandomMeal() {
+  public void randomMeal()
+  {
     String URL = "https://www.themealdb.com/api/json/v1/1/random.php";
-    for (int i = 1; i <= 10; i++) {
+    for (int i = 1; i <= 10; i++)
+    {
       endResponse(URL, "random");
     }
   }
 
-  public void fillMeals(String MealName) {
+  public void fillMeals(String MealName)
+  {
     String URL =
-      "https://www.themealdb.com/api/json/v1/1/search.php?s=" + MealName;
+            "https://www.themealdb.com/api/json/v1/1/search.php?s=" + MealName;
     String response = new UrlToJson(URL).getResponse();
     Gson gson = new Gson();
     Meal.FoodList meals = gson.fromJson(response, Meal.FoodList.class);
 
-    if (meals != null) {
+    if (meals != null)
+    {
       Meal[] mealsList = meals.GetMeal();
-      if (mealsList != null) {
-        for (int i = 0; i < mealsList.length; i++) {
+      if (mealsList != null)
+      {
+        for (int i = 0; i < mealsList.length; i++)
+        {
           searchArray[i] = String.valueOf(mealsList[i]);
         }
-      } else {
+      }
+      else
+      {
         System.out.println("No meals found");
       }
-    } else {
+    }
+    else
+    {
       System.out.println("No meals found");
     }
   }

@@ -1,5 +1,6 @@
 package main;
 
-public interface Filters {
+public interface Filters
+{
   void fill();
 }

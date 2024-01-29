@@ -1,10 +1,11 @@
 package main;
 
-public class CategoryItem {
-
+public class CategoryItem
+{
   private String strCategory;
 
-  public String getName() {
+  public String getName()
+  {
     return strCategory;
   }
 }

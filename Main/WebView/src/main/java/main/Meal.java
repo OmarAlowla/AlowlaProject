@@ -1,6 +1,7 @@
 package main;
 
-public class Meal {
+public class Meal
+{
 
   private String strMeal;
   private String strMealThumb;
@@ -12,15 +13,15 @@ public class Meal {
   @Override
   public String toString() {
     return (
-      strMeal +
-      " ," +
-      strMealThumb +
-      " ," +
-      strCategory +
-      " ," +
-      strArea +
-      " ," +
-      strYoutube
+            strMeal +
+                    " ," +
+                    strMealThumb +
+                    " ," +
+                    strCategory +
+                    " ," +
+                    strArea +
+                    " ," +
+                    strYoutube
     );
   }
 

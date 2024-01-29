@@ -1,10 +1,12 @@
 package main;
 
-public class AreaItem {
+public class AreaItem
+{
 
   private String strArea;
 
-  public String getName() {
+  public String getName()
+  {
     return strArea;
   }
 }

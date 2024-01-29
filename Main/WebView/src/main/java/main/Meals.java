@@ -1,7 +1,7 @@
 package main;
 
-public class Meals {
-
+public class Meals
+{
   private Food[] meals;
 
   public Food[] getFoods() {

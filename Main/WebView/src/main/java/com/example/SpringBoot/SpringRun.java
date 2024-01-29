@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @SpringBootApplication
 @Controller
-public class SpringRun {
+public class SpringRun
+{
 
   @Autowired
   private ResourceLoader resourceLoader;
@@ -22,23 +23,27 @@ public class SpringRun {
   private main.Controller ct = new main.Controller();
   private main.CookieUtil cu = new main.CookieUtil();
 
-  public static void main(String[] args) {
+  public static void main(String[] args)
+  {
     SpringApplication.run(SpringRun.class, args);
   }
 
   @GetMapping("/hello")
   public String hello(
-    @RequestParam(value = "name", defaultValue = "World") String name
-  ) {
+          @RequestParam(value = "name", defaultValue = "World") String name
+  )
+  {
     return String.format("Hello %s!", name);
   }
 
   @GetMapping("/show")
   public void show(
-    @RequestParam(value = "search", defaultValue = "beef") String search,
-    HttpServletResponse response
-  ) {
-    try {
+          @RequestParam(value = "search", defaultValue = "beef") String search,
+          HttpServletResponse response
+  )
+  {
+    try
+    {
       Arrays.fill(ct.searchArray, null);
       ct.fillMeals(search);
       Resource resource = resourceLoader.getResource("classpath:show.html");
@@ -47,29 +52,36 @@ public class SpringRun {
       cu.newCookie(ct.catArray, "cats", response, resource);
 
       cu.wirteFile(response, resource);
-    } catch (IOException e) {
+    }
+    catch (IOException e)
+    {
       e.printStackTrace();
     }
   }
 
   @GetMapping("/showRandom")
-  public void showRandom(HttpServletResponse response) {
-    try {
+  public void showRandom(HttpServletResponse response)
+  {
+    try
+    {
       ct = new main.Controller();
-      ct.RandomMeal();
+      ct.randomMeal();
       Resource resource = resourceLoader.getResource(
-        "classpath:showRandom.html"
+              "classpath:showRandom.html"
       );
-      for (int i = 0; i < 10; i++) {
+      for (int i = 0; i < 10; i++)
+      {
         cu.newCookieAsStr(
-          ct.randomArray[i],
-          "randomArray" + i,
-          response,
-          resource
+                ct.randomArray[i],
+                "randomArray" + i,
+                response,
+                resource
         );
       }
       cu.wirteFile(response, resource);
-    } catch (IOException e) {
+    }
+    catch (IOException e)
+    {
       e.printStackTrace();
     }
   }
